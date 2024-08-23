@@ -85,4 +85,10 @@ public class controller {
     public String restaurantReviewList() {
         return "restaurantReviewList";
     }
+
+    @GetMapping("/memberEdit")
+    public String memberEdit() {
+        return "memberEdit";
+    }
+
 }

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarriorDining</title>
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/memberCreate.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <section class="main-section">
+        <!-- 회원가입 폼 -->
+        <div class="signup-form">
+            <h2>회원정보수정</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required readonly="readonly">
+                    <div id="email-info" class="info"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">비밀번호 확인</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">생년월일</label>
+                    <input type="date" id="birthdate" name="birthdate" required readonly="readonly">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">휴대폰 번호</label>
+                    <input type="text" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" pattern="\d*" maxlength="11" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">성별</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">선택하세요</option>
+                        <option value="male">남성</option>
+                        <option value="female">여성</option>
+                    </select>
+                </div>
+
+                <button type="submit">수정하기</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('check-email').addEventListener('click', function() {
+        const emailInput = document.getElementById('email');
+        const emailInfo = document.getElementById('email-info');
+        const email = emailInput.value;
+
+        // 이메일 형식 확인
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            emailInfo.textContent = '유효한 이메일 주소를 입력해주세요.';
+            emailInfo.style.color = '#e74c3c'; // 빨간색
+            return;
+        }
+
+        // 이메일 중복 검사 로직 (예: AJAX 요청 등)
+        // 여기서는 간단한 예시로, 이메일이 "test@example.com"이면 중복으로 처리
+        if (email === 'test@example.com') {
+            emailInfo.textContent = '이미 사용 중인 이메일입니다.';
+            emailInfo.style.color = '#e74c3c'; // 빨간색
+        } else {
+            emailInfo.textContent = '사용 가능한 이메일입니다.';
+            emailInfo.style.color = '#2ecc71'; // 초록색
+        }
+    });
+
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // 실제 폼 제출 처리 로직을 여기에 추가
+        alert('회원가입이 완료되었습니다!');
+    });
+</script>
+</body>
+</html>
