@@ -1,0 +1,165 @@
+/*===== 메인 페이지 배너 css =====*/
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #ffd1b3; /* 밝은 코랄 색 */
+    color: #333;
+}
+.hero h1 {
+    font-size: 2.8em; /* 배너 제목 크기 */
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em; /* 배너 내용 크기 */
+    margin-bottom: 20px;
+}
+/* ========== */
+
+/* 메인페이지 레스토랑 섹션 css */
+.main-content {
+    margin-top: 20px; /* 배너와 내용의 간격 */
+}
+
+.section-title { /* 섹션 제목 */
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6f61; /* 오렌지색 밑줄 */
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more-link { /* 더보기 */
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: bold;
+}
+
+.more-link:hover {
+    text-decoration: underline;
+}
+
+.section-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 섹션 간격 */
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.restaurant-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 1 1 calc(25% - 20px); /* 4개씩 보이도록 설정 */
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-card img { /* 섹션 이미지 설정 */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.restaurant-card h3 {
+    margin: 15px;
+    font-size: 1.25em;
+    color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
+}
+
+.restaurant-card p {
+    margin: 0 15px 15px;
+}
+/* ========== */
+
+/* 메인페이지 리뷰 섹션 css */
+.review-section {
+    margin-top: 40px;
+    overflow: hidden; /* 리뷰 섹션의 overflow를 hidden으로 설정하여 스크롤 바를 숨김 */
+}
+
+.review-section h2 { /* 리뷰란 제목 */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
+    border-bottom: 2px solid #ff6f61; /* 오렌지색 밑줄 */
+    padding-bottom: 10px;
+}
+
+.review-carousel {
+    display: flex;
+    overflow: hidden; /* 슬라이드가 섹션 밖으로 나가지 않도록 설정 */
+    position: relative;
+    width: 100%;
+}
+
+.review-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.review-slide {
+    flex: 0 0 auto;
+    width: 25%; /* 4개 카드가 보이도록 설정 */
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.review-card { /* 섹션 사이즈 */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 220px; /* 카드 높이 고정 */
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 60px; /* 푸터와의 간격을 60px로 설정 (필요에 따라 조정 가능) */
+}
+
+.review-card img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    align-self: center;
+}
+
+.review-card .review-content {
+    text-align: center;
+}
+
+.review-card .reviewer-name { /* 리뷰섹션 제목(이름) */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
+}
+
+.review-card .review-text {
+    font-size: 0.9em;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 최대 3줄까지 보이도록 설정 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
+}
+/* ========== */

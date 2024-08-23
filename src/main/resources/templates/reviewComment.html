@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarriorDining - 리뷰 작성 페이지</title>
+  <style>
+    /* 기본 스타일 설정 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: #333;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-buttons a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .auth-buttons a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-bar {
+      background-color: #f9f9f9;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      position: sticky; /* 스크롤 시 상단에 고정 */
+      top: 0;
+      z-index: 1000; /* 다른 요소들보다 위에 보이도록 */
+    }
+
+    .nav-bar ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .nav-bar li {
+      margin: 0 15px;
+    }
+
+    .nav-bar a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+    }
+
+    .nav-bar a:hover {
+      color: #007aff; /* 애플 감성 파란색 */
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .search-bar input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      margin-right: -1px;
+      width: 200px;
+    }
+
+    .search-bar button {
+      padding: 8px 12px;
+      background-color: #333;
+      border: 1px solid #333;
+      border-radius: 0 4px 4px 0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.125em;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1.125em;
+    }
+
+    .cta-button:hover {
+      background-color: #444;
+    }
+
+    /* 리뷰 작성 폼 스타일 */
+    .review-form-container {
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px; /* 폼의 최대 너비 설정 */
+      width: 90%; /* 폼의 기본 너비 설정 */
+    }
+
+    .review-form-container h3 {
+      margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: right; /* 버튼을 오른쪽으로 정렬 */
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      max-width: 100%; /* 가로 길이를 컨테이너에 맞추기 */
+      width: calc(100% - 22px); /* 패딩과 테두리를 고려하여 너비 조정 */
+    }
+
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.125em;
+    }
+
+    .form-group button:hover {
+      background-color: #444;
+    }
+
+    /* 별점 시스템 스타일 */
+    .star-rating {
+      display: flex;
+      justify-content: center; /* 별들을 가운데 정렬 */
+      font-size: 3em; /* 별 크기를 키움 */
+      margin-bottom: 15px;
+      pointer-events: none; /* 클릭 이벤트를 무시함 */
+    }
+
+    .star-rating input {
+      display: none; /* 실제 radio input은 숨김 */
+    }
+
+    .star-rating label {
+      color: #ddd;
+      transition: color 0.2s ease;
+      position: relative; /* 상대적인 위치를 설정 */
+      top: -15px; /* 별을 위로 15px 이동 */
+      cursor: default; /* 클릭 시 아무 동작도 하지 않음 */
+    }
+
+    .star-rating label.selected {
+      color: #f7d700; /* 별점 선택 시 별 색상 */
+    }
+
+    /* 리뷰 작성 불가능 설정 */
+    .review-form-container input,
+    .review-form-container textarea {
+      background-color: #f5f5f5;
+      color: #999;
+    }
+
+    .review-form-container button {
+      display: none; /* 리뷰 작성 버튼 숨김 */
+    }
+
+    /* 댓글 섹션 스타일 */
+    .comments-section {
+      margin-top: 40px;
+    }
+
+    .comments-section h4 {
+      margin-bottom: 15px;
+      font-size: 1.25em;
+    }
+
+    .comment {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment p {
+      margin: 0;
+    }
+
+    .comment-date {
+      font-size: 0.875em;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    .comment-form {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    .comment-form label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      resize: vertical;
+    }
+
+    .comment-form button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.125em;
+    }
+
+    .comment-form button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">WarriorDining</a>
+      <div class="auth-buttons">
+        <a href="#">로그인</a>
+        <a href="#">회원 가입</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-bar">
+  <div class="container">
+    <ul>
+      <li><a href="#">예약 TOP</a></li>
+      <li><a href="#">이달의 맛집</a></li>
+      <li><a href="#">예약</a></li>
+      <li><a href="#">문의</a></li>
+      <li class="search-bar">
+        <input type="text" placeholder="지역 또는 레스토랑 검색">
+        <button>검색</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<section class="hero">
+  <h1>리뷰를 작성하고 공유하세요</h1>
+  <p>식사 경험을 공유하여 다른 사람들과 나누세요.</p>
+</section>
+
+<main class="container">
+  <!-- 리뷰 작성 섹션 -->
+  <div class="review-form-container">
+    <h3>리뷰 보기</h3>
+    <form action="/submit-review" method="post">
+      <div class="form-group">
+        <div class="star-rating" id="starRating">
+          <input type="radio" id="star1" name="rating" value="1">
+          <label for="star1" data-value="1">&#9733;</label>
+          <input type="radio" id="star2" name="rating" value="2">
+          <label for="star2" data-value="2">&#9733;</label>
+          <input type="radio" id="star3" name="rating" value="3">
+          <label for="star3" data-value="3">&#9733;</label>
+          <input type="radio" id="star4" name="rating" value="4">
+          <label for="star4" data-value="4">&#9733;</label>
+          <input type="radio" id="star5" name="rating" value="5">
+          <label for="star5" data-value="5">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea id="review" name="review" rows="10" placeholder="리뷰를 작성하세요" required style="resize: none;" readonly></textarea>
+      </div>
+
+      <!-- 리뷰 제출 버튼 숨김 -->
+    </form>
+  </div>
+
+  <!-- 댓글 섹션 -->
+  <div class="comments-section">
+    <h4>댓글</h4>
+    <!-- 댓글 목록 -->
+    <div class="comment">
+      <p>이 리뷰는 정말 도움이 되었어요. 감사합니다!</p>
+      <span class="comment-date">2024-08-20</span>
+    </div>
+    <div class="comment">
+      <p>리뷰가 매우 유익했어요. 덕분에 좋은 식사를 했습니다.</p>
+      <span class="comment-date">2024-08-19</span>
+    </div>
+
+    <!-- 댓글 작성 폼 -->
+    <div class="comment-form">
+      <h4>댓글 작성</h4>
+      <form id="commentForm">
+        <div class="form-group">
+          <label for="commentText" style="text-align: left;">댓글 내용:</label>
+          <textarea id="commentText" name="commentText" rows="5" placeholder="댓글을 작성하세요" required style="resize: none;"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">댓글 작성</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const labels = document.querySelectorAll('.star-rating label');
+    let selectedValue = '3'; // 초기 선택된 별점 값
+
+    // 선택된 별점을 표시하기 위한 함수
+    function updateStars() {
+      labels.forEach(label => {
+        if (label.dataset.value <= selectedValue) {
+          label.classList.add('selected');
+        } else {
+          label.classList.remove('selected');
+        }
+      });
+    }
+
+    updateStars(); // 페이지 로드 시 별점 업데이트
+
+    // 댓글 작성 폼 처리
+    const commentForm = document.getElementById('commentForm');
+    commentForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const commentText = document.getElementById('commentText').value;
+
+      if (commentText.trim()) {
+        // 새 댓글 생성
+        const newComment = document.createElement('div');
+        newComment.className = 'comment';
+        newComment.innerHTML = `
+                    <p>${commentText}</p>
+                    <span class="comment-date">2024-08-20</span>
+                `;
+
+        // 댓글 목록에 추가
+        document.querySelector('.comments-section').insertBefore(newComment, document.querySelector('.comment-form'));
+
+        // 폼 초기화
+        commentForm.reset();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
+<!-- 리뷰코멘트 페이지 css 수정하기!! -->
