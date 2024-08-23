@@ -96,4 +96,8 @@ public class controller {
         return "reviewEdit";
     }
 
+    @GetMapping("/managerNotice")
+    public String managerNotice() {
+        return "managerNotice";
+    }
 }
