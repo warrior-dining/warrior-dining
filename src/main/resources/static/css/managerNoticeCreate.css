@@ -1,0 +1,55 @@
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 400px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
+    gap: 10px;
+}
+
+.button-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+.cancel-btn {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+.save-btn:hover {
+    background-color: #e63946;
+}
+
+.cancel-btn:hover {
+    background-color: #ccc;
+}
