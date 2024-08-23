@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WarriorDining - 리뷰 작성 페이지</title>
-    <link rel="stylesheet" href="./css/home.css">
+    <title>WarriorDining - 리뷰 수정 페이지</title>
     <link rel="stylesheet" href="./css/default.css">
     <link rel="stylesheet" href="./css/newReview.css">
 </head>
@@ -37,10 +36,12 @@
 </div>
 
 <main class="container">
-    <!-- 리뷰 작성 섹션 -->
+    <!-- 리뷰 수정 섹션 -->
     <div class="review-form-container">
-        <h3>리뷰 작성하기</h3>
-        <form action="/submit-review" method="post">
+        <h3>리뷰 수정하기</h3>
+        <form action="/update-review" method="post">
+            <input type="hidden" name="reviewId" value="12345"> <!-- 리뷰 ID를 숨겨진 필드로 추가 -->
+
             <div class="form-group">
                 <label for="rating">별점:</label>
                 <div class="star-rating">
@@ -62,8 +63,10 @@
                 <textarea id="review" name="review" rows="10" placeholder="리뷰를 작성하세요" required></textarea>
             </div>
 
+            <!-- 버튼 그룹을 flex 컨테이너로 변경 -->
             <div class="form-group buttons">
-                <button type="submit">리뷰 제출</button>
+                <button type="submit">수정</button>
+                <button type="button">삭제</button>
             </div>
         </form>
     </div>
@@ -77,6 +80,18 @@
     document.addEventListener('DOMContentLoaded', function() {
         const labels = document.querySelectorAll('.star-rating label');
         let selectedValue = null;
+
+        // 현재 별점 값을 불러와서 선택 상태로 설정
+        const currentRating = 3; // 예시로 현재 별점 3을 사용
+
+        labels.forEach(label => {
+            const value = label.dataset.value;
+            if (value <= currentRating) {
+                label.classList.add('selected');
+                document.getElementById(`star${value}`).checked = true;
+                selectedValue = currentRating;
+            }
+        });
 
         labels.forEach(label => {
             label.addEventListener('click', function() {

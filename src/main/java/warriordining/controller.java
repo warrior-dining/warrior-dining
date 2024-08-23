@@ -91,4 +91,9 @@ public class controller {
         return "memberEdit";
     }
 
+    @GetMapping("/reviewEdit")
+    public String reviewEdit() {
+        return "reviewEdit";
+    }
+
 }
