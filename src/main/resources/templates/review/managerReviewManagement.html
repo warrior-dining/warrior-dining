@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 관리</title>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/managerHome.css">
+    <link rel="stylesheet" href="./css/managerReviewManagement.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그아웃</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li class="nav-item">
+                <a href="#">공지 사항</a>
+                <div class="sub-menu">
+                    <a href="#">공지 사항 목록</a>
+                    <a href="#">공지 작성</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">회원 관리</a>
+                <div class="sub-menu">
+                    <a href="#">회원 목록</a>
+                    <a href="#">뭔가 메뉴가 더 있겟지</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">음식점 관리</a>
+                <div class="sub-menu">
+                    <a href="#">음식점 목록</a>
+                    <a href="#">음식점 추가</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">리뷰 관리</a>
+                <div class="sub-menu">
+                    <a href="#">리뷰 목록</a>
+                    <a href="#">리뷰 필터</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">예약 관리</a>
+                <div class="sub-menu">
+                    <a href="#">예약 목록</a>
+                    <a href="#">예약 검색</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">문의 사항 관리</a>
+                <div class="sub-menu">
+                    <a href="#">문의 목록</a>
+                    <a href="#">미처리 문의</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <!-- 필터 바 -->
+        <div class="filter-bar">
+            <select>
+                <option>날짜</option>
+                <option>2024-08-25</option>
+                <option>2024-08-24</option>
+                <!-- 추가 옵션들 -->
+            </select>
+            <select>
+                <option>평점</option>
+                <option>★★★</option>
+                <option>★★★★</option>
+                <!-- 추가 옵션들 -->
+            </select>
+            <select>
+                <option>상태</option>
+                <option>승인 대기</option>
+                <option>승인됨</option>
+                <option>삭제됨</option>
+            </select>
+            <select>
+                <option>정렬 기준</option>
+                <option>최신순</option>
+                <option>오래된 순</option>
+                <option>평점 높은 순</option>
+            </select>
+        </div>
+        <!-- 검색 바 -->
+        <div class="search-bar">
+            <input type="text" placeholder="리뷰 검색">
+            <button>검색</button>
+        </div>
+
+        <!-- 리뷰 테이블 -->
+        <table class="review-table">
+            <thead>
+            <tr>
+                <th>리뷰 ID</th>
+                <th>사용자 이름</th>
+                <th>음식점명</th>
+                <th>평점</th>
+                <th>리뷰 내용</th>
+                <th>리뷰 날짜</th>
+                <th>작업</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-id="1">
+                <td>001</td>
+                <td>홍길동</td>
+                <td>새마을식당</td>
+                <td>★★★★</td>
+                <td>음식이 맛있어요.</td>
+                <td>2024-08-25</td>
+                <td class="actions">
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+            <tr class="review-detail">
+                <td colspan="7">
+                    <div class="detail-header">상세 내용</div>
+                    <p><strong>리뷰 내용:</strong> 음식이 정말 맛있었고, 분위기도 좋았습니다. 다음에 또 방문할게요.</p>
+                </td>
+            </tr>
+            <tr data-id="2">
+                <td>002</td>
+                <td>김철수</td>
+                <td>새마을식당2</td>
+                <td>★★★</td>
+                <td>서비스가 느렸어요.</td>
+                <td>2024-08-24</td>
+                <td class="actions">
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+            <tr class="review-detail">
+                <td colspan="7">
+                    <div class="detail-header">상세 내용</div>
+                    <p><strong>리뷰 내용:</strong> 서비스가 좀 느렸지만, 음식은 괜찮았습니다.</p>
+                </td>
+            </tr>
+            <!-- 추가 리뷰들 -->
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('.review-table tbody tr[data-id]');
+
+        rows.forEach(row => {
+            row.addEventListener('click', function() {
+                const nextRow = this.nextElementSibling;
+                if (nextRow && nextRow.classList.contains('review-detail')) {
+                    const isVisible = nextRow.style.display === 'table-row';
+                    nextRow.style.display = isVisible ? 'none' : 'table-row';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
