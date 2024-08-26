@@ -115,4 +115,14 @@ public class controller {
     public String managerInquiryList() {
         return "managerInquiryList";
     }
+
+    @GetMapping("/reservationDetail")
+    public String reservationDetail() {
+        return "reservationDetail";
+    }
+
+    @GetMapping("/myPage")
+    public String myPage() {
+        return "myPage";
+    }
 }
