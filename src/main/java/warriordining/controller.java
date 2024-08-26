@@ -105,4 +105,9 @@ public class controller {
     public String managerNoticeCreate() {
         return "managerNoticeCreate";
     }
+
+    @GetMapping("/managerInquiryDetail")
+    public String managerNoticeList() {
+        return "managerInquiryDetail";
+    }
 }
