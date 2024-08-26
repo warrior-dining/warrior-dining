@@ -1,0 +1,92 @@
+/* 즐겨찾기 페이지 스타일 추가 */
+main {
+    display: flex;
+    margin: 20px 0;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ff6f61; /* 오렌지색 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.content section {
+    margin-bottom: 20px;
+}
+
+.content h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.favorite-list {
+    margin-top: 20px;
+}
+
+.favorite-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-item h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    margin: 5px 0;
+}
+
+.remove-favorite-button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.remove-favorite-button:hover {
+    background-color: #e63946;
+}

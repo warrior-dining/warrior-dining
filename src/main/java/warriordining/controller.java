@@ -116,13 +116,18 @@ public class controller {
         return "managerInquiryList";
     }
 
-    @GetMapping("/reservationDetail")
-    public String reservationDetail() {
-        return "reservationDetail";
-    }
-
     @GetMapping("/myPage")
     public String myPage() {
         return "myPage";
+    }
+
+    @GetMapping("/memberBookmark")
+    public String memberBookmark() {
+        return "memberBookmark";
+    }
+
+    @GetMapping("/memberCoupon")
+    public String memberCoupon() {
+        return "memberCoupon";
     }
 }
