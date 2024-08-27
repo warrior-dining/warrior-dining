@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/inquiry.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="/static" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="/monthreservation">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="/help">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<section class="contact-section">
+    <h1 class="page-title">문의하기</h1>
+    <p>궁금한 점이나 불편한 사항이 있으시면 아래 폼을 통해 문의해 주세요. 최대한 빠르게 답변 드리겠습니다.</p>
+
+    <form action="/submit-contact-form" method="post" class="contact-form">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">제목</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">메시지</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">보내기</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>

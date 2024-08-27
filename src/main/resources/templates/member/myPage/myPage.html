@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/myPage.css"> <!-- CSS 파일 링크 -->
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="sidebar">
+        <h2>마이페이지</h2>
+        <ul>
+            <li><a href="">내정보</a></li>
+            <li><a href="reservationList">예약 내역</a></li>
+            <li><a href="myReview">리뷰 관리</a></li>
+            <li><a href="bookMark">즐겨찾기</a></li>
+            <li><a href="coupon">쿠폰함</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <section id="profile">
+            <h1>내정보</h1>
+            <form id="infoForm">
+                <fieldset>
+                    <legend>개인정보</legend>
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" value="홍길동">
+
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" value="hong@example.com">
+
+                    <label for="phone">전화번호:</label>
+                    <input type="tel" id="phone" name="phone" value="010-1234-5678">
+                </fieldset>
+
+                <a href="setting" class="button">정보 수정</a>
+            </form>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>

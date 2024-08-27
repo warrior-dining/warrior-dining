@@ -1,0 +1,161 @@
+/* 리뷰 작성 폼 스타일 */
+.review-form-container {
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1150px; /* 가로 사이즈를 800px로 변경 */
+    width: 100%;
+    text-align: center; /* 폼 중앙 정렬 */
+}
+
+.review-form-container h3 {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
+    text-align: left; /* 제목 왼쪽 정렬 */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left; /* 레이블 왼쪽 정렬 */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 22px); /* 여백을 고려하여 100% - 여백 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함시킴 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.125em;
+    display: block;
+    width: 100px; /* 버튼 너비를 100%로 설정하여 중앙 정렬 */
+    margin-top: 10px; /* 버튼과 입력 필드 간의 간격 */
+}
+
+.form-group button:hover {
+    background-color: #e63946;
+}
+
+/* 별점 시스템 스타일 */
+.star-rating {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    transition: color 0.2s ease;
+    cursor: pointer; /* 별점 클릭 가능하도록 설정 */
+}
+
+.star-rating label.selected {
+    color: #f7d700; /* 별점 선택 시 별 색상 */
+}
+
+/* 읽기 전용 상태 */
+.review-form-container input,
+.review-form-container textarea {
+    background-color: #f5f5f5;
+    color: #999;
+}
+
+.review-form-container button {
+    display: none; /* 리뷰 작성 버튼 숨김 */
+}
+
+/* 댓글 섹션 스타일 */
+.comments-section {
+    margin-top: 40px;
+}
+
+.comments-section h4 {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
+    text-align: left; /* 제목 왼쪽 정렬 */
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    margin: 0;
+}
+
+.comment-date {
+    font-size: 0.875em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.comment-form {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center; /* 폼 중앙 정렬 */
+}
+
+.comment-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left; /* 레이블 왼쪽 정렬 */
+}
+
+.comment-form textarea {
+    width: calc(100% - 22px); /* 여백을 고려하여 100% - 여백 */
+    resize: vertical;
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+.comment-form button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 8px 15px; /* 버튼 사이즈 줄이기 */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    display: inline-block; /* 버튼을 인라인 블록으로 설정 */
+    margin-left: auto; /* 오른쪽으로 붙이기 */
+    margin-right: 0; /* 오른쪽 여백 없애기 */
+}
+
+.comment-form button:hover {
+    background-color: #e63946;
+}

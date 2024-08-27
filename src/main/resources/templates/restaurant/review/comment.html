@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarriorDining - 리뷰 Comment 페이지</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/reviewComment.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">WarriorDining</a>
+      <div class="auth-buttons">
+        <a href="#">로그인</a>
+        <a href="#">회원 가입</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-bar">
+  <div class="container">
+    <ul>
+      <li><a href="#">예약 TOP</a></li>
+      <li><a href="#">이달의 맛집</a></li>
+      <li><a href="#">예약</a></li>
+      <li><a href="#">문의</a></li>
+      <li class="search-bar">
+        <input type="text" placeholder="식당 검색">
+        <button>검색</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<section class="review-form-container" id="review-form">
+  <h3>리뷰 보기</h3>
+  <form action="#" method="post">
+    <div class="form-group">
+      <label for="restaurant-name">레스토랑 이름</label>
+      <input type="text" id="restaurant-name" name="restaurant-name" readonly>
+    </div>
+    <div class="form-group">
+      <label for="rating">별점</label>
+      <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="1" disabled><label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="2" disabled><label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3" disabled><label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="4" disabled><label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="5" disabled><label for="star1">★</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="review">리뷰 내용</label>
+      <textarea id="review" name="review" rows="5" readonly></textarea>
+    </div>
+  </form>
+</section>
+
+<section class="comments-section">
+  <div class="container">
+    <h4>사용자 댓글</h4>
+    <div class="comment">
+      <p><strong>홍길동:</strong> 음식이 정말 맛있었습니다! 서비스도 훌륭했어요.</p>
+      <p class="comment-date">2024-08-21</p>
+    </div>
+    <div class="comment">
+      <p><strong>김철수:</strong> 분위기가 좋고, 재방문 의사 있습니다.</p>
+      <p class="comment-date">2024-08-22</p>
+    </div>
+
+    <div class="comment-form">
+      <h4>댓글 작성</h4>
+      <form action="#" method="post">
+        <div class="form-group">
+          <textarea id="comment" name="comment" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">댓글 제출</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 자바스크립트로 예제 데이터 로드 및 표시
+  document.addEventListener('DOMContentLoaded', function() {
+    // 리뷰 정보 예제 (실제 데이터는 서버에서 받아야 함)
+    const reviewData = {
+      restaurantName: '해물탕집',
+      rating: 4,
+      reviewContent: '해물탕이 매우 맛있었습니다. 직원들이 친절하고 분위기도 좋았어요!'
+    };
+
+    // HTML 요소 가져오기
+    const restaurantNameInput = document.getElementById('restaurant-name');
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    const reviewTextarea = document.getElementById('review');
+
+    // 데이터 설정
+    restaurantNameInput.value = reviewData.restaurantName;
+    reviewTextarea.value = reviewData.reviewContent;
+
+    // 별점 표시
+    ratingInputs.forEach(input => {
+      if (parseInt(input.value) <= reviewData.rating) {
+        input.checked = true;
+        input.nextElementSibling.classList.add('selected');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

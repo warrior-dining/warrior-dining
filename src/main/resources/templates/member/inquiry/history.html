@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 문의내역 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/inquiry.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="/static" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="/monthreservation">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="/help">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <h1 class="page-title">내 문의내역</h1>
+    <div class="inquiries-container">
+        <div class="inquiry-list">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>문의 제목</th>
+                    <th>문의 날짜</th>
+                    <th>상태</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- 문의 내역 데이터 시작 -->
+                <tr>
+                    <td>3</td>
+                    <td><a href="/inquiry-detail/1">문의 제목 1</a></td>
+                    <td>2024-08-20</td>
+                    <td class="status">처리중</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="/inquiry-detail/2">문의 제목 2</a></td>
+                    <td>2024-08-18</td>
+                    <td class="status">완료</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><a href="/inquiry-detail/3">문의 제목 3</a></td>
+                    <td>2024-08-15</td>
+                    <td class="status">대기중</td>
+                </tr>
+                <!-- 문의 내역 데이터 끝 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>
