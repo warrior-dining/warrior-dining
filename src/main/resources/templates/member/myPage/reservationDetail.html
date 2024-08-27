@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 수정/취소 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/myPageReservationDetail.css">
+    <style>
+        /* CSS 추가: 시간 선택 필드와 다른 입력 필드의 크기 맞추기 */
+        .reservation-edit-section input,
+        .reservation-edit-section select,
+        .reservation-edit-section textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .reservation-edit-section select {
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="content">
+        <section id="reservation-edit">
+            <h1>예약 수정/취소</h1>
+
+            <!-- 예약 수정 폼 -->
+            <div class="reservation-edit-section">
+                <h2>예약 수정</h2>
+                <form id="reservation-form" action="#" method="post">
+                    <label for="restaurant">레스토랑</label>
+                    <input type="text" id="restaurant" name="restaurant" value="레스토랑 A" required>
+
+                    <label for="date">예약일</label>
+                    <input type="date" id="date" name="date" value="2024-08-15" required>
+
+                    <label for="time">예약 시간</label>
+                    <select id="time" name="time" required>
+                        <!-- JavaScript로 30분 단위 시간 옵션 추가 -->
+                    </select>
+
+                    <label for="people">인원 수</label>
+                    <input type="number" id="people" name="people" value="3" min="1" required>
+
+                    <label for="special-request">특별 요청</label>
+                    <textarea id="special-request" name="special-request" rows="4">창가 자리 부탁드립니다.</textarea>
+
+                    <button type="button" class="submit-button" onclick="confirmSave(), window.location.href='reservationList'">수정 저장</button>
+                </form>
+            </div>
+
+            <!-- 예약 취소 버튼 -->
+            <div class="reservation-cancel-section">
+                <h2>예약 취소</h2>
+                <p>예약을 취소하려면 아래 버튼을 클릭하세요.</p>
+                <button class="cancel-button" onclick="confirmCancel(), window.location.href='reservationList'">예약 취소</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript 코드 추가 -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const timeSelect = document.getElementById('time');
+        const existingTime = '18:00'; // 기존에 설정된 시간
+
+        function generateTimeOptions() {
+            let startTime = 0; // 00:00
+            let endTime = 24 * 60; // 24:00
+            let interval = 30; // 30분 간격
+
+            for (let minutes = startTime; minutes < endTime; minutes += interval) {
+                let hours = Math.floor(minutes / 60);
+                let mins = minutes % 60;
+                let formattedHours = String(hours).padStart(2, '0');
+                let formattedMinutes = String(mins).padStart(2, '0');
+                let optionValue = `${formattedHours}:${formattedMinutes}`;
+                let option = document.createElement('option');
+                option.value = optionValue;
+                option.textContent = optionValue;
+
+                if (optionValue === existingTime) {
+                    option.selected = true; // 기본값 설정
+                }
+
+                timeSelect.appendChild(option);
+            }
+        }
+
+        generateTimeOptions();
+    });
+
+    function confirmSave() {
+        if (confirm('정말로 수정 내용을 저장하시겠습니까?')) {
+            document.getElementById('reservation-form').submit();
+        }
+    }
+
+    function confirmCancel() {
+        if (confirm('정말로 예약을 취소하시겠습니까?')) {
+            alert('예약이 취소되었습니다.');
+            // 취소 요청을 서버로 전송하는 코드 추가
+            // window.location.href = '취소 완료 페이지 URL';
+        }
+    }
+</script>
+</body>
+</html>

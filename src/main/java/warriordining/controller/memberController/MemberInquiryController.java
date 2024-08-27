@@ -17,9 +17,4 @@ public class MemberInquiryController {
     public String inquiry() {
         return "/member/inquiry/create";
     }
-
-    @GetMapping("/history")
-    public String myInquiry() {
-        return "/member/inquiry/history";
-    }
 }

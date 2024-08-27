@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 관리 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/myPage.css"> <!-- CSS 파일 링크 -->
+    <script>
+        function confirmDelete(event) {
+            event.preventDefault(); // 기본 링크 동작 방지
+            if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
+                // 리뷰 삭제 작업 수행
+                alert('리뷰가 삭제되었습니다.'); // 예시로 삭제되었음을 알리는 메시지
+                // 실제 삭제 작업을 구현할 경우 AJAX 요청을 사용할 수 있습니다.
+                // window.location.href = 'deleteReview'; // 서버로 삭제 요청 보내기
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('.delete-review-button');
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', confirmDelete);
+            });
+        });
+    </script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="sidebar">
+        <h2>마이페이지</h2>
+        <ul>
+            <li><a href="myPage">내정보</a></li>
+            <li><a href="reservationList">예약 내역</a></li>
+            <li><a href="myReview">리뷰 관리</a></li>
+            <li><a href="bookmark">즐겨찾기</a></li>
+            <li><a href="coupon">쿠폰함</a></li>
+            <li><a href="myInquiry">내 문의내역</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <section id="myReview">
+            <h1>리뷰 관리</h1>
+            <div class="review-list">
+                <div class="review-item">
+                    <h2>레스토랑 A</h2>
+                    <p>별점: ★★★★☆ (4.5)</p>
+                    <p>작성일: 2024-08-21</p>
+                    <p>리뷰 내용: 음식이 맛있었고 서비스도 훌륭했습니다. 분위기가 아쉬웠지만 전반적으로 만족스러웠습니다.</p>
+                    <button class="edit-review-button" onclick="window.location.href='reviewEdit'">수정</button>
+                    <button class="delete-review-button">삭제</button>
+                </div>
+
+                <div class="review-item">
+                    <h2>레스토랑 B</h2>
+                    <p>별점: ★★★☆☆ (3.8)</p>
+                    <p>작성일: 2024-08-15</p>
+                    <p>리뷰 내용: 가격이 조금 비쌌지만 음식은 괜찮았습니다. 서비스는 개선이 필요합니다.</p>
+                    <button class="edit-review-button" onclick="window.location.href='reviewEdit'">수정</button>
+                    <button class="delete-review-button">삭제</button>
+                </div>
+
+                <div class="review-item">
+                    <h2>레스토랑 C</h2>
+                    <p>별점: ★★★★★ (5.0)</p>
+                    <p>작성일: 2024-08-10</p>
+                    <p>리뷰 내용: 최고의 경험이었습니다. 모든 것이 완벽했습니다.</p>
+                    <button class="edit-review-button" onclick="window.location.href='reviewEdit'">수정</button>
+                    <button class="delete-review-button">삭제</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>

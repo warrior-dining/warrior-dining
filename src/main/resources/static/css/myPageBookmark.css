@@ -1,0 +1,114 @@
+/* 기존 스타일 유지 */
+
+/* 즐겨찾기 페이지 스타일 추가 */
+html, body {
+    height: 100%; /* 전체 높이를 100%로 설정 */
+    margin: 0;
+    font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 60px; /* header의 높이 설정 */
+}
+
+main {
+    display: flex;
+    flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
+    margin: 20px 0;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 20px;
+    position: sticky; /* 사이드바를 스크롤 시 고정 */
+    top: 0; /* 사이드바가 페이지 상단에 고정되도록 설정 */
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ff6f61; /* 오렌지색 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: calc(100vh - 100px); /* 전체 높이에서 header와 footer의 높이를 제외한 높이 */
+    overflow-y: auto; /* 콘텐츠가 길어질 경우 수직 스크롤 추가 */
+}
+
+.content section {
+    margin-bottom: 20px;
+}
+
+.content h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.favorite-list {
+    margin-top: 20px;
+}
+
+.favorite-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-item h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    margin: 5px 0;
+}
+
+.remove-favorite-button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.remove-favorite-button:hover {
+    background-color: #e63946;
+}

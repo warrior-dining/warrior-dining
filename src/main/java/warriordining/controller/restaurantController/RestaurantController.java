@@ -17,4 +17,9 @@ public class RestaurantController {
     public String detail() {
         return "restaurant/detail";
     }
+
+    @GetMapping("/list")
+    public String list() {
+        return "restaurant/list";
+    }
 }

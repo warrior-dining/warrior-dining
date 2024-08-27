@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설정 | WarriorDining</title>
-    <link rel="stylesheet" href="/css/memberEdit.css"> <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/myPageEdit.css"> <!-- CSS 파일 링크 -->
     <link rel="stylesheet" href="/css/default.css">
+
+    <!-- JavaScript 코드 추가 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 프로필 수정 버튼 클릭 이벤트
+            document.querySelector('form[action="#"]').addEventListener('submit', function(event) {
+                event.preventDefault(); // 폼의 기본 제출 동작을 막음
+                alert('변경 사항이 저장되었습니다.');
+            });
+
+            // 비밀번호 변경 버튼 클릭 이벤트
+            document.querySelectorAll('form[action="#"]')[1].addEventListener('submit', function(event) {
+                event.preventDefault(); // 폼의 기본 제출 동작을 막음
+                alert('비밀번호가 변경되었습니다.');
+            });
+
+            // 알림 설정 버튼 클릭 이벤트
+            document.querySelectorAll('form[action="#"]')[2].addEventListener('submit', function(event) {
+                event.preventDefault(); // 폼의 기본 제출 동작을 막음
+                alert('알림 설정이 저장되었습니다.');
+            });
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -39,11 +62,12 @@
     <div class="sidebar">
         <h2>마이페이지</h2>
         <ul>
-            <li><a href="">내정보</a></li>
+            <li><a href="myPage">내정보</a></li>
             <li><a href="reservationList">예약 내역</a></li>
             <li><a href="myReview">리뷰 관리</a></li>
-            <li><a href="bookMark">즐겨찾기</a></li>
+            <li><a href="bookmark">즐겨찾기</a></li>
             <li><a href="coupon">쿠폰함</a></li>
+            <li><a href="myInquiry">내 문의내역</a></li>
         </ul>
     </div>
 
@@ -104,6 +128,13 @@
 
                     <button type="submit" class="save-button">저장</button>
                 </form>
+            </div>
+
+            <!-- 회원 탈퇴 링크 추가 -->
+            <div class="settings-section">
+                <h2>회원 탈퇴</h2>
+                <p>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</p>
+                <a href="deleteAccount" class="delete-link">회원 탈퇴</a>
             </div>
         </section>
     </div>

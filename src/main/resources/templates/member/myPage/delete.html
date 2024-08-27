@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 탈퇴 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/myPageDelete.css"> <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/default.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="content">
+        <section id="delete-account">
+            <h1>회원 탈퇴</h1>
+            <div class="confirmation-section">
+                <p class="confirmation-message">회원 탈퇴를 하시려면 비밀번호를 입력한 후, 아래 버튼을 클릭하세요. 이 작업은 되돌릴 수 없습니다.</p>
+                <form id="delete-account-form" action="delete_account_processing" method="post">
+                    <label for="password">비밀번호 확인</label>
+                    <input type="password" id="password" name="password" class="large-input" required>
+
+                    <div class="confirmation-buttons">
+                        <button type="submit" class="delete-button" onclick="window.location.href='/'">회원 탈퇴</button>
+                        <button type="button" onclick="window.location.href='setting'">취소</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript 코드 추가 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('delete-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 폼의 기본 제출 동작을 막음
+            const password = document.getElementById('password').value;
+
+            if (!password) {
+                alert('비밀번호를 입력해주세요.');
+                return;
+            }
+
+            if (confirm('정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+                // 비밀번호 검증 로직 추가 필요 (서버 측에서 처리)
+                // 예: AJAX 요청 또는 폼 제출
+
+                alert('회원 탈퇴가 완료되었습니다.');
+                // 실제 탈퇴 처리 로직 추가 필요
+                // 예: document.location.href = '탈퇴 처리 서버 URL';
+            }
+        });
+    });
+</script>
+</body>
+</html>

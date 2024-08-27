@@ -1,0 +1,112 @@
+/* 음식점 전체 리스트 */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 0;
+    border: 1px solid #ddd;
+    margin: 0;
+
+}
+.sidebar h2{
+    margin-left: 10px;
+}
+
+.sidebar h3{
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 10px 12px 9px 16px;
+}
+
+.sidebar select {
+    width: 90%;
+    margin:14px 15px;
+    height: 30px;
+}
+.sidebar input  {
+    width: 85%;
+    margin:14px 15px;
+    height: 30px;
+
+}
+
+.sidebar button{
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.restaurant-list-container {
+    flex: 1;
+    margin: 20px auto;
+    padding: 0;
+    display: flex;
+}
+
+
+
+.restaurant-list {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.restaurant-list h1 {
+    margin: 0;
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px; /* 제목과 리스트 사이의 간격 조정 */
+}
+
+.restaurant-item {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    cursor: pointer; /* 클릭할 수 있음을 나타냄 */
+}
+
+.restaurant-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.restaurant-details {
+    padding: 15px;
+    flex: 1;
+}
+
+.restaurant-details h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.restaurant-details p {
+    margin: 10px 0 0;
+    color: #555;
+}
+
+/* 맨 위로 가기 버튼 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: url('/img/scroll-to-top.png') no-repeat center center;
+    background-size: cover;
+    width: 50px; /* 이미지의 너비에 맞게 조정 */
+    height: 50px; /* 이미지의 높이에 맞게 조정 */
+    border: none;
+    cursor: pointer;
+    display: none; /* 기본적으로 숨김 */
+    z-index: 1000; /* 다른 요소 위에 위치하도록 설정 */
+}
+
+.scroll-to-top:hover {
+    opacity: 0.8; /* 버튼에 마우스를 올렸을 때 투명도를 조정하여 시각적인 피드백 제공 */
+}

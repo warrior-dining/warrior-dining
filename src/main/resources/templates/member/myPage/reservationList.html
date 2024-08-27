@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 내역 | WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/myPageReservationList.css"> <!-- CSS 파일 링크 -->
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li><a href="/topreservation">예약 TOP</a></li>
+            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="/reservation">예약</a></li>
+            <li><a href="#">문의</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="지역 또는 레스토랑 검색">
+                <button>검색</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main class="container">
+    <div class="sidebar">
+        <h2>마이페이지</h2>
+        <ul>
+            <li><a href="myPage">내정보</a></li>
+            <li><a href="reservationList">예약 내역</a></li>
+            <li><a href="myReview">리뷰 관리</a></li>
+            <li><a href="bookmark">즐겨찾기</a></li>
+            <li><a href="coupon">쿠폰함</a></li>
+            <li><a href="myInquiry">내 문의내역</a></li>
+        </ul>
+    </div>
+
+    <section id="orders">
+        <h1>예약 내역</h1>
+        <div class="order-list">
+            <div class="order-item">
+                <div class="reservation-info">
+                    <h2 class="reservation-number">예약 번호: 12345</h2>
+                    <p class="reservation-date">예약일: 2024-08-15</p>
+                    <p class="reservation-status">상태: 방문예정</p>
+                    <ul class="reservation-details">
+                        <li>레스토랑: 레스토랑 A</li>
+                        <li>인원 수 : 3명</li>
+                        <li>예약 시간: 18:00</li>
+                        <li>특별 요청: 창가 자리 부탁드립니다.</li>
+                        <li>결제 상태: 결제 대기</li>
+                    </ul>
+                    <button class="order-details-button" onclick="window.location.href='reservationDetail'">예약 수정/취소</button>
+                    <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+                </div>
+            </div>
+
+
+            <div class="order-item">
+                <h2 class="reservation-number">예약 번호: 12345</h2>
+                <p class="reservation-date">예약일: 2024-08-15</p>
+                <p class="reservation-status">상태: 방문완료</p>
+                <ul class="reservation-details">
+                    <li>레스토랑: 레스토랑 A</li>
+                    <li>인원 수 : 3명</li>
+                    <li>예약 시간: 18:00</li>
+                    <li>특별 요청: 창가 자리 부탁드립니다.</li>
+                    <li>결제 상태: 결제 완료</li>
+                </ul>
+                <button class="order-details-button">예약 수정/취소</button>
+                <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+            </div>
+
+            <div class="order-item">
+                <h2 class="reservation-number">예약 번호: 12345</h2>
+                <p class="reservation-date">예약일: 2024-08-15</p>
+                <p class="reservation-status">상태: 방문예정</p>
+                <ul class="reservation-details">
+                    <li>레스토랑: 레스토랑 A</li>
+                    <li>인원 수 : 3명</li>
+                    <li>예약 시간: 18:00</li>
+                    <li>특별 요청: 창가 자리 부탁드립니다.</li>
+                    <li>결제 상태: 결제 완료</li>
+                </ul>
+                <button class="order-details-button">예약 수정/취소</button>
+                <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>
