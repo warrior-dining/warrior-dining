@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/managerHome.css">
     <link rel="stylesheet" href="/css/memberList.css">
+    <link rel="stylesheet" href="/css/restaurantManagement.css">
 </head>
 <body>
 <header>
@@ -73,13 +74,16 @@
 <main>
     <div class="container">
         <h2>음식점 목록</h2>
-        <div class="search-bar">
-            <select>
-                <option value="name">음식점 이름</option>
-                <option value="location">위치</option>
-            </select>
-            <input type="text" placeholder="검색어 입력...">
-            <button>검색</button>
+        <div class="header-container">
+            <button type="button">음식점 등록</button>
+            <div class="search-bar">
+                <select>
+                    <option value="name">음식점 이름</option>
+                    <option value="location">위치</option>
+                </select>
+                <input type="text" placeholder="검색어 입력...">
+                <button>검색</button>
+            </div>
         </div>
         <table>
             <thead>
