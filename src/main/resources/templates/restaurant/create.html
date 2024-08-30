@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/managerHome.css">
     <link rel="stylesheet" href="/css/restaurantCreate.css">
+
 </head>
 <body>
 <header>
@@ -82,6 +83,23 @@
                     <label for="file">음식점 사진</label>
                     <input type="file" id="file" name="file" required>
                 </div>
+                <!-- 메뉴 입력란 -->
+                <div class="form-group menu-container-wrapper">
+                    <label>메뉴 추가</label>
+                    <div id="menu-container">
+                        <div class="menu-item-container">
+                            <div class="menu-item">
+                                <label for="menu-item-1">메뉴명 :</label>
+                                <input type="text" id="menu-item-1" name="menu-item-1" placeholder="메뉴명을 입력하세요" required>
+                                <label for="menu-price-1">가격 :</label>
+                                <input type="number" id="menu-price-1" name="menu-price-1" placeholder="가격을 입력하세요" required>
+                                <button type="button" class="delete-menu-item" onclick="deleteMenuItem(this)">−</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-menu-item" onclick="addMenuItem()">+</button>
+                </div>
+                <!-- 메뉴 입력란 끝 -->
                 <div class="form-group">
                     <label for="location">위치</label>
                     <input type="text" id="location" name="location" required>
@@ -109,5 +127,51 @@
 <footer>
     <p>&copy; 2024 WarriorDining. All rights reserved.</p>
 </footer>
+
+<script>
+    let menuCount = 1;
+
+    function addMenuItem() {
+        if (menuCount >= 10) {
+            alert('메뉴 항목은 최대 10개까지 추가할 수 있습니다.');
+            return;
+        }
+        menuCount++;
+        const container = document.getElementById('menu-container');
+        const newMenuItem = document.createElement('div');
+        newMenuItem.classList.add('menu-item-container');
+        newMenuItem.innerHTML = `
+            <div class="menu-item">
+                <label for="menu-item-${menuCount}">메뉴명 :</label>
+                <input type="text" id="menu-item-${menuCount}" name="menu-item-${menuCount}" placeholder="메뉴명을 입력하세요" required>
+                <label for="menu-price-${menuCount}">가격 :</label>
+                <input type="number" id="menu-price-${menuCount}" name="menu-price-${menuCount}" placeholder="가격을 입력하세요" required>
+                <button type="button" class="delete-menu-item" onclick="deleteMenuItem(this)">−</button>
+            </div>
+        `;
+        container.appendChild(newMenuItem);
+        updateDeleteButtons();
+    }
+
+    function deleteMenuItem(button) {
+        const menuItem = button.parentElement.parentElement;
+        if (document.querySelectorAll('.menu-item-container').length > 1) {
+            menuItem.remove();
+            menuCount--;
+            updateDeleteButtons();
+        }
+    }
+
+    function updateDeleteButtons() {
+        const menuItems = document.querySelectorAll('.menu-item-container');
+        menuItems.forEach((item) => {
+            const deleteButton = item.querySelector('.delete-menu-item');
+            deleteButton.disabled = menuItems.length <= 1;
+        });
+    }
+
+    // Initialize delete button states
+    document.addEventListener('DOMContentLoaded', updateDeleteButtons);
+</script>
 </body>
 </html>
