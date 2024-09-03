@@ -12,4 +12,10 @@ public class ownerController {
     public String ownerPage() {
         return "owner/ownerPage";
     }
+    
+    @GetMapping("/reservationList")
+    public String reservationList() {
+    	return "owner/reservationList";
+    }
+    
 }
