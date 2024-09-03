@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식점 등록 - WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/managerHome.css">
+    <link rel="stylesheet" href="/css/restaurantEditdetail.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그아웃</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li class="nav-item">
+                <a href="#">음식점 관리</a>
+                <div class="sub-menu">
+                    <a href="#">내 가게 정보</a>
+                    <a href="#">뭔가 메뉴가 더 있겟지</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">예약 관리</a>
+                <div class="sub-menu">
+                    <a href="#">예약 현황</a>
+                    <a href="#">@@@@@@@</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">리뷰 관리</a>
+                <div class="sub-menu">
+                    <a href="#">가게 리뷰</a>
+                    <a href="#">요엘아 부탁한다</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">문의 사항 관리</a>
+                <div class="sub-menu">
+                    <a href="#">이게 오너쪽에 필요할까?</a>
+                    <a href="#">나는 모르겠다.</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <h2>내 음식점</h2>
+        <div class="form-container disabled-field">
+            <form id="restaurant-form">
+                <div class="form-group">
+                    <label for="name">음식점 이름</label>
+                    <input type="text" id="name" name="name" required value="예시 음식점" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="file">음식점 사진</label>
+                    <img src="https://via.placeholder.com/200x150" alt="레스토랑 이미지">
+                </div>
+                <!-- 메뉴 입력란 -->
+                <div class="form-group menu-container-wrapper">
+                    <label>메뉴 추가</label>
+                    <div id="menu-container">
+                        <div class="menu-item-container">
+                            <div class="menu-item">
+                                <label for="menu-item-1">메뉴명 :</label>
+                                <input type="text" id="menu-item-1" name="menu-item-1" placeholder="메뉴명을 입력하세요" value="비빔밥" required disabled>
+                                <label for="menu-price-1">가격 :</label>
+                                <input type="number" id="menu-price-1" name="menu-price-1" placeholder="가격을 입력하세요" value="12000" required disabled>
+                            </div>
+                        </div>
+                        <div class="menu-item-container">
+                            <div class="menu-item">
+                                <label for="menu-item-2">메뉴명 :</label>
+                                <input type="text" id="menu-item-2" name="menu-item-2" placeholder="메뉴명을 입력하세요" value="김치찌개" required disabled>
+                                <label for="menu-price-2">가격 :</label>
+                                <input type="number" id="menu-price-2" name="menu-price-2" placeholder="가격을 입력하세요" value="10000" required disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 메뉴 입력란 끝 -->
+                <div class="form-group">
+                    <label for="location">위치</label>
+                    <input type="text" id="location" name="location" required value="서울시 강남구" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="phone" required value="02-1234-5678" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="opening-hours">운영 시간</label>
+                    <input type="text" id="opening-hours" name="opening-hours" value="10:00 - 22:00" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="description">설명</label>
+                    <textarea id="description" name="description" disabled>맛있고 다양한 한식 메뉴를 제공합니다.</textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="showFormData()" disabled>수정하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container display-container" id="display-container" style="display:none;">
+        <h3>입력된 정보</h3>
+        <div class="form-group">
+            <label>음식점 이름:</label>
+            <span id="display-name"></span>
+        </div>
+        <div class="form-group">
+            <label>위치:</label>
+            <span id="display-location"></span>
+        </div>
+        <div class="form-group">
+            <label>전화번호:</label>
+            <span id="display-phone"></span>
+        </div>
+        <div class="form-group">
+            <label>운영 시간:</label>
+            <span id="display-opening-hours"></span>
+        </div>
+        <div class="form-group">
+            <label>설명:</label>
+            <span id="display-description"></span>
+        </div>
+        <div class="form-group">
+            <label>메뉴:</label>
+            <div class="menu-display">
+                <div class="menu-group">
+                    <label>음식 이름</label>
+                    <div id="display-menu-items"></div>
+                </div>
+                <div class="menu-group">
+                    <label>가격</label>
+                    <div id="display-menu-prices"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+</body>
+</html>

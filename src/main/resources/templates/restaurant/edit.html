@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식점 등록 - WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/managerHome.css">
+    <link rel="stylesheet" href="/css/restaurantEdit.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그아웃</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li class="nav-item">
+                <a href="#">회원 관리</a>
+                <div class="sub-menu">
+                    <a href="#">회원 목록</a>
+                    <a href="#">회원 검색</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">음식점 관리</a>
+                <div class="sub-menu">
+                    <a href="#">음식점 목록</a>
+                    <a href="#">음식점 추가</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">리뷰 관리</a>
+                <div class="sub-menu">
+                    <a href="#">리뷰 목록</a>
+                    <a href="#">리뷰 필터</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">예약 관리</a>
+                <div class="sub-menu">
+                    <a href="#">예약 목록</a>
+                    <a href="#">예약 검색</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">문의 사항 관리</a>
+                <div class="sub-menu">
+                    <a href="#">문의 목록</a>
+                    <a href="#">미처리 문의</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">통계 및 보고서</a>
+                <div class="sub-menu">
+                    <a href="#">월간 통계</a>
+                    <a href="#">연간 보고서</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <h2>내 음식점</h2>
+        <div class="form-container">
+            <form id="restaurant-form">
+                <div class="form-group">
+                    <label for="name">음식점 이름</label>
+                    <input type="text" id="name" name="name" required value="예시 음식점">
+                </div>
+                <div class="form-group">
+                    <label for="file">음식점 사진</label>
+                    
+                    <div class="image-gallery" id="image-gallery">
+                        <!-- 기존 사진 및 새로 추가된 사진이 여기에 표시됨 -->
+                    </div>
+                    <input type="file" id="file" name="file" accept="image/*" onchange="previewPhoto()">
+                </div>
+                <!-- 메뉴 입력란 -->
+                <div class="form-group menu-container-wrapper">
+                    <label>메뉴 추가</label>
+                    <div id="menu-container">
+                        <div class="menu-item-container">
+                            <div class="menu-item">
+                                <label for="menu-item-1">메뉴명 :</label>
+                                <input type="text" id="menu-item-1" name="menu-item-1" placeholder="메뉴명을 입력하세요" value="비빔밥" required>
+                                <label for="menu-price-1">가격 :</label>
+                                <input type="number" id="menu-price-1" name="menu-price-1" placeholder="가격을 입력하세요" value="12000" required>
+                                <button type="button" class="delete-menu-item" onclick="deleteMenuItem(this)">−</button>
+                            </div>
+                        </div>
+                        <div class="menu-item-container">
+                            <div class="menu-item">
+                                <label for="menu-item-2">메뉴명 :</label>
+                                <input type="text" id="menu-item-2" name="menu-item-2" placeholder="메뉴명을 입력하세요" value="김치찌개" required>
+                                <label for="menu-price-2">가격 :</label>
+                                <input type="number" id="menu-price-2" name="menu-price-2" placeholder="가격을 입력하세요" value="10000" required>
+                                <button type="button" class="delete-menu-item" onclick="deleteMenuItem(this)">−</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-menu-item" onclick="addMenuItem()">+</button>
+                </div>
+                <!-- 메뉴 입력란 끝 -->
+                <div class="form-group">
+                    <label for="location">위치</label>
+                    <input type="text" id="location" name="location" required value="서울시 강남구">
+                </div>
+                <div class="form-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="phone" required value="02-1234-5678">
+                </div>
+                <div class="form-group">
+                    <label for="opening-hours">운영 시간</label>
+                    <input type="text" id="opening-hours" name="opening-hours" value="10:00 - 22:00">
+                </div>
+                <div class="form-group">
+                    <label for="description">설명</label>
+                    <textarea id="description" name="description">맛있고 다양한 한식 메뉴를 제공합니다.</textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="showFormData()">저장하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    let menuCount = 2; // 현재 2개의 메뉴 항목이 있음
+
+    function addMenuItem() {
+        if (menuCount >= 10) {
+            alert('메뉴 항목은 최대 10개까지 추가할 수 있습니다.');
+            return;
+        }
+        menuCount++;
+        const container = document.getElementById('menu-container');
+        const newMenuItem = document.createElement('div');
+        newMenuItem.classList.add('menu-item-container');
+        newMenuItem.innerHTML = `
+            <div class="menu-item">
+                <label for="menu-item-${menuCount}">메뉴명 :</label>
+                <input type="text" id="menu-item-${menuCount}" name="menu-item-${menuCount}" placeholder="메뉴명을 입력하세요" required>
+                <label for="menu-price-${menuCount}">가격 :</label>
+                <input type="number" id="menu-price-${menuCount}" name="menu-price-${menuCount}" placeholder="가격을 입력하세요" required>
+                <button type="button" class="delete-menu-item" onclick="deleteMenuItem(this)">−</button>
+            </div>
+        `;
+        container.appendChild(newMenuItem);
+        updateDeleteButtons();
+    }
+
+    function deleteMenuItem(button) {
+        const menuItem = button.parentElement.parentElement;
+        if (document.querySelectorAll('.menu-item-container').length > 1) {
+            menuItem.remove();
+            menuCount--;
+            updateDeleteButtons();
+        }
+    }
+
+    function updateDeleteButtons() {
+        const menuItems = document.querySelectorAll('.menu-item-container');
+        menuItems.forEach((item) => {
+            const deleteButton = item.querySelector('.delete-menu-item');
+            deleteButton.disabled = menuItems.length <= 1;
+        });
+    }
+
+  
+    function deletePhoto(button) {
+        const imageContainer = button.parentElement;
+        imageContainer.remove(); // 사진과 삭제 버튼이 포함된 컨테이너를 제거
+    }
+
+    function previewPhoto() {
+        const fileInput = document.getElementById('file');
+        const imageGallery = document.getElementById('image-gallery');
+        
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 200;
+                    canvas.height = 150;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    const resizedImage = new Image();
+                    resizedImage.src = canvas.toDataURL();
+                    
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container');
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.classList.add('delete-photo');
+                    deleteButton.textContent = '×';
+                    deleteButton.onclick = function() {
+                        deletePhoto(deleteButton);
+                    };
+                    
+                    imageContainer.appendChild(resizedImage);
+                    imageContainer.appendChild(deleteButton);
+                    
+                    imageGallery.appendChild(imageContainer);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Initialize delete button states
+    document.addEventListener('DOMContentLoaded', updateDeleteButtons);
+</script>
+</body>
+</html>
