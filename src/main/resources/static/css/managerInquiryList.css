@@ -43,7 +43,8 @@ th {
     color: #ff6f61; /* 식욕을 돋우는 오렌지색 */
 }
 
-tr:nth-child(even) {
+tbody tr:hover {
+    cursor: pointer;
     background-color: #f9f9f9;
 }
 
