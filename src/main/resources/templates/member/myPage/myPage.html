@@ -6,6 +6,7 @@
     <title>마이페이지 | WarriorDining</title>
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/myPage.css"> <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/mypageMutual.css">
 </head>
 <body>
 <header>
@@ -39,17 +40,16 @@
     <div class="sidebar">
         <h2>마이페이지</h2>
         <ul>
-            <li><a href="myPage">내정보</a></li>
-            <li><a href="reservationList">예약 내역</a></li>
-            <li><a href="myReview">리뷰 관리</a></li>
-            <li><a href="bookmark">즐겨찾기</a></li>
-            <li><a href="coupon">쿠폰함</a></li>
-            <li><a href="myInquiry">내 문의내역</a></li>
+            <li><a href="/member/myPage" class="active">내정보</a></li>
+            <li><a href="/member/myPage/reservationList">예약 내역</a></li>
+            <li><a href="/member/myPage/reviewList">리뷰 관리</a></li>
+            <li><a href="/member/myPage/bookmark">즐겨찾기</a></li>
+            <li><a href="/member/myPage/coupon">쿠폰함</a></li>
+            <li><a href="/member/myPage/inquiryHistory">내 문의내역</a></li>
         </ul>
     </div>
 
     <div class="content">
-        <section id="profile">
             <h1>내정보</h1>
             <form id="infoForm">
                 <fieldset>
@@ -64,7 +64,7 @@
                     <input type="tel" id="phone" name="phone" value="010-1234-5678">
                 </fieldset>
 
-                <a href="setting" class="button">정보 수정</a>
+                <a href="/member/myPage/edit" class="button">정보 수정</a>
             </form>
         </section>
     </div>

@@ -1,0 +1,58 @@
+/* sidebar.css */
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 공통 레이아웃 설정 */
+main {
+    display: flex;
+    flex: 1;
+    margin: 20px auto;
+    max-width: 1200px; /* 페이지 컨텐츠의 최대 폭 설정 */
+    padding: 0 20px;
+}
+
+.sidebar ul li a.active {
+    color: #e63946; /* 활성화된 링크의 색상 설정 */
+    font-weight: bold; /* 활성화된 링크의 글자 굵게 설정 */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: calc(100vh - 100px); /* 전체 높이에서 header와 footer의 높이를 제외한 높이 */
+    overflow-y: auto; /* 콘텐츠가 길어질 경우 수직 스크롤 추가 */
+}

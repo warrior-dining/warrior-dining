@@ -1,97 +1,105 @@
-/* 예약 수정/취소 페이지 전용 스타일 */
 
-/* .reservation-edit-section */
+/* 콘텐츠 스타일 */
+
+/* 예약 수정 섹션 스타일 */
 .reservation-edit-section {
-    background: #fff;
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .reservation-edit-section h2 {
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #ff6f61;
-    padding-bottom: 10px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
 }
 
-form input, form textarea {
+.reservation-edit-section label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.reservation-edit-section input[type="text"],
+.reservation-edit-section input[type="date"],
+.reservation-edit-section input[type="number"],
+.reservation-edit-section textarea,
+.reservation-edit-section select {
     width: 100%;
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    border-radius: 4px;
     box-sizing: border-box;
+    margin-bottom: 10px;
     font-size: 16px;
-    color: #333;
 }
 
-form input:focus, form textarea:focus {
-    border-color: #ff6f61;
-    outline: none;
+.reservation-edit-section .button-container {
+    margin-top: 20px;
 }
 
-form textarea {
-    resize: vertical;
-}
-
-form button.submit-button {
-    background-color: #ff6f61;
-    color: #fff;
+.reservation-edit-section .submit-button,
+.reservation-edit-section .cancel-edit-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
 
-form button.submit-button:hover {
-    background-color: #e55b50;
+.reservation-edit-section .submit-button {
+    background-color: #ff6f61; /* 기본 배경색 */
+    color: #fff; /* 글씨 색상 */
 }
 
-/* .reservation-cancel-section */
+.reservation-edit-section .cancel-edit-button {
+    background-color: #ddd; /* 기본 배경색 */
+    color: #333; /* 글씨 색상 */
+    margin-left: 10px;
+}
+
+.reservation-edit-section .submit-button:hover,
+.reservation-edit-section .cancel-edit-button:hover {
+    opacity: 0.8;
+}
+
+/* 예약 취소 섹션 스타일 */
 .reservation-cancel-section {
-    background: #fff;
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .reservation-cancel-section h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .reservation-cancel-section p {
     margin-bottom: 20px;
     font-size: 16px;
-    color: #666;
 }
 
-.cancel-button {
-    background-color: #ff6f61; /* 수정된 색상 */
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
+.reservation-cancel-section .cancel-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    border: none;
+    background-color: #ff6f61; /* 기본 배경색 */
+    color: #fff; /* 글씨 색상 */
+    cursor: pointer;
 }
 
-.cancel-button:hover {
-    background-color: #e55b50; /* 수정된 호버 색상 */
+.reservation-cancel-section .cancel-button:hover {
+    opacity: 0.8;
 }
