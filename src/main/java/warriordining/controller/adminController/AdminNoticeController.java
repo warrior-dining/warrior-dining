@@ -17,4 +17,9 @@ public class AdminNoticeController {
     public String create() {
         return "/admin/notice/create";
     }
+    
+    @GetMapping("/detail")
+    public String detail() {
+        return "/admin/notice/detail";
+    }
 }

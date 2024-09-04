@@ -11,14 +11,16 @@
     margin-bottom: 20px;
 }
 
-.form-group input, .form-group textarea {
-    width: 97%;
-    padding: 10px;
+.form-group input {
+    width: 100%;
+    padding: 10px 0;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .form-group textarea {
+	
     resize: vertical;
     height: 400px;
 }
