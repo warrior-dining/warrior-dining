@@ -18,6 +18,11 @@ public class AdminController {
         return "/admin/memberManagement";
     }
 
+    @GetMapping("/memberManagementDetail")
+    public String memberManagementDetail() {
+        return "/admin/memberManagementDetail";
+    }
+
     @GetMapping("/restaurantManagement")
     public String restaurantManagement() {
         return "/admin/restaurantManagement";
