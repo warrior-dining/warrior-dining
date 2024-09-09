@@ -13,11 +13,13 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
 }
 
 .contact-form label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    margin-top : 20px;
     font-weight: bold;
     text-align: left;
     color: #ff6f61;
@@ -29,13 +31,14 @@
     padding: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top : 10px;
     font-size: 1em;
 }
 
 .contact-form textarea {
     resize: vertical;
-    min-height: 150px;
+    min-height: 200px;
 }
 
 .contact-form button {
@@ -55,6 +58,12 @@
 
 .page-title {
     font-size: 2em;
+    color: #ff6f61;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-title2 {
+    font-size: 1em;
     color: #ff6f61;
     text-align: center;
     margin-bottom: 30px;
