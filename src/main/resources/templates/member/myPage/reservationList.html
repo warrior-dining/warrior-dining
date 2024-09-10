@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약 내역 | WarriorDining</title>
     <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/myPageReservationList.css"> <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/myPageReservationList.css">
+    <link rel="stylesheet" href="/css/mypageMutual.css">
 </head>
 <body>
 <header>
@@ -39,12 +40,12 @@
     <div class="sidebar">
         <h2>마이페이지</h2>
         <ul>
-            <li><a href="myPage">내정보</a></li>
-            <li><a href="reservationList">예약 내역</a></li>
-            <li><a href="myReview">리뷰 관리</a></li>
-            <li><a href="bookmark">즐겨찾기</a></li>
-            <li><a href="coupon">쿠폰함</a></li>
-            <li><a href="myInquiry">내 문의내역</a></li>
+            <li><a href="/member/myPage">내정보</a></li>
+            <li><a href="/member/myPage/reservationList" class="active">예약 내역</a></li>
+            <li><a href="/member/myPage/reviewList">리뷰 관리</a></li>
+            <li><a href="/member/myPage/bookmark">즐겨찾기</a></li>
+            <li><a href="/member/myPage/coupon">쿠폰함</a></li>
+            <li><a href="/member/myPage/inquiryHistory">내 문의내역</a></li>
         </ul>
     </div>
 
@@ -68,35 +69,38 @@
                 </div>
             </div>
 
-
             <div class="order-item">
-                <h2 class="reservation-number">예약 번호: 12345</h2>
-                <p class="reservation-date">예약일: 2024-08-15</p>
-                <p class="reservation-status">상태: 방문완료</p>
-                <ul class="reservation-details">
-                    <li>레스토랑: 레스토랑 A</li>
-                    <li>인원 수 : 3명</li>
-                    <li>예약 시간: 18:00</li>
-                    <li>특별 요청: 창가 자리 부탁드립니다.</li>
-                    <li>결제 상태: 결제 완료</li>
-                </ul>
-                <button class="order-details-button">예약 수정/취소</button>
-                <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+                <div class="reservation-info">
+                    <h2 class="reservation-number">예약 번호: 12346</h2>
+                    <p class="reservation-date">예약일: 2024-08-16</p>
+                    <p class="reservation-status">상태: 방문완료</p>
+                    <ul class="reservation-details">
+                        <li>레스토랑: 레스토랑 B</li>
+                        <li>인원 수 : 2명</li>
+                        <li>예약 시간: 19:00</li>
+                        <li>특별 요청: 조용한 자리 부탁드립니다.</li>
+                        <li>결제 상태: 결제 완료</li>
+                    </ul>
+                    <button class="order-details-button" onclick="window.location.href='reservationDetail'">예약 수정/취소</button>
+                    <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+                </div>
             </div>
 
             <div class="order-item">
-                <h2 class="reservation-number">예약 번호: 12345</h2>
-                <p class="reservation-date">예약일: 2024-08-15</p>
-                <p class="reservation-status">상태: 방문예정</p>
-                <ul class="reservation-details">
-                    <li>레스토랑: 레스토랑 A</li>
-                    <li>인원 수 : 3명</li>
-                    <li>예약 시간: 18:00</li>
-                    <li>특별 요청: 창가 자리 부탁드립니다.</li>
-                    <li>결제 상태: 결제 완료</li>
-                </ul>
-                <button class="order-details-button">예약 수정/취소</button>
-                <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+                <div class="reservation-info">
+                    <h2 class="reservation-number">예약 번호: 12347</h2>
+                    <p class="reservation-date">예약일: 2024-08-17</p>
+                    <p class="reservation-status">상태: 방문예정</p>
+                    <ul class="reservation-details">
+                        <li>레스토랑: 레스토랑 C</li>
+                        <li>인원 수 : 4명</li>
+                        <li>예약 시간: 20:00</li>
+                        <li>특별 요청: 장애인 접근 가능 좌석 요청</li>
+                        <li>결제 상태: 결제 완료</li>
+                    </ul>
+                    <button class="order-details-button" onclick="window.location.href='reservationDetail'">예약 수정/취소</button>
+                    <button class="cancel-button" onclick="window.location.href='newReview'">리뷰 작성하기</button>
+                </div>
             </div>
         </div>
     </section>

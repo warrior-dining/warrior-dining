@@ -6,20 +6,7 @@
     <title>예약 수정/취소 | WarriorDining</title>
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/myPageReservationDetail.css">
-    <style>
-        /* CSS 추가: 시간 선택 필드와 다른 입력 필드의 크기 맞추기 */
-        .reservation-edit-section input,
-        .reservation-edit-section select,
-        .reservation-edit-section textarea {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .reservation-edit-section select {
-            padding: 8px;
-            font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/mypageMutual.css">
 </head>
 <body>
 <header>
@@ -50,6 +37,18 @@
 </div>
 
 <main class="container">
+    <div class="sidebar">
+        <h2>마이페이지</h2>
+        <ul>
+            <li><a href="/member/myPage">내정보</a></li>
+            <li><a href="/member/myPage/reservationList" class="active">예약 내역</a></li>
+            <li><a href="/member/myPage/reviewList">리뷰 관리</a></li>
+            <li><a href="/member/myPage/bookmark">즐겨찾기</a></li>
+            <li><a href="/member/myPage/coupon">쿠폰함</a></li>
+            <li><a href="/member/myPage/inquiryHistory">내 문의내역</a></li>
+        </ul>
+    </div>
+
     <div class="content">
         <section id="reservation-edit">
             <h1>예약 수정/취소</h1>
@@ -75,15 +74,19 @@
                     <label for="special-request">특별 요청</label>
                     <textarea id="special-request" name="special-request" rows="4">창가 자리 부탁드립니다.</textarea>
 
-                    <button type="button" class="submit-button" onclick="confirmSave(), window.location.href='reservationList'">수정 저장</button>
+                    <!-- 수정 저장 및 수정 취소 버튼 추가 -->
+                    <div class="button-container">
+                        <button type="button" class="submit-button" onclick="confirmSave()">수정 저장</button>
+                        <button type="button" class="cancel-edit-button" onclick="cancelEdit()">수정 취소</button>
+                    </div>
                 </form>
             </div>
 
-            <!-- 예약 취소 버튼 -->
+            <!-- 예약 취소 버튼 유지 -->
             <div class="reservation-cancel-section">
                 <h2>예약 취소</h2>
                 <p>예약을 취소하려면 아래 버튼을 클릭하세요.</p>
-                <button class="cancel-button" onclick="confirmCancel(), window.location.href='reservationList'">예약 취소</button>
+                <button class="cancel-button" onclick="confirmCancel()">예약 취소</button>
             </div>
         </section>
     </div>
@@ -128,6 +131,13 @@
     function confirmSave() {
         if (confirm('정말로 수정 내용을 저장하시겠습니까?')) {
             document.getElementById('reservation-form').submit();
+        }
+    }
+
+    function cancelEdit() {
+        if (confirm('수정 내용을 취소하시겠습니까? 변경 사항이 저장되지 않습니다.')) {
+            // 페이지를 새로고침하거나 다른 페이지로 이동
+            window.location.href = 'reservationList'; // 수정 취소 후 예약 목록 페이지로 리다이렉트
         }
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 탈퇴 | WarriorDining</title>
-    <link rel="stylesheet" href="/css/myPageDelete.css"> <!-- CSS 파일 링크 -->
+    <link rel="stylesheet" href="/css/myPageDelete.css">
     <link rel="stylesheet" href="/css/default.css">
 </head>
 <body>
@@ -46,8 +46,8 @@
                     <input type="password" id="password" name="password" class="large-input" required>
 
                     <div class="confirmation-buttons">
-                        <button type="submit" class="delete-button" onclick="window.location.href='/'">회원 탈퇴</button>
-                        <button type="button" onclick="window.location.href='setting'">취소</button>
+                        <button type="submit" class="delete-button">회원 탈퇴</button>
+                        <button type="button" onclick="window.location.href='edit'">취소</button>
                     </div>
                 </form>
             </div>
@@ -59,11 +59,11 @@
     <p>&copy; 2024 WarriorDining. All rights reserved.</p>
 </footer>
 
-<!-- JavaScript 코드 추가 -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('delete-account-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // 폼의 기본 제출 동작을 막음
+            event.preventDefault(); // Prevent the default form submission
+
             const password = document.getElementById('password').value;
 
             if (!password) {
@@ -72,12 +72,30 @@
             }
 
             if (confirm('정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
-                // 비밀번호 검증 로직 추가 필요 (서버 측에서 처리)
-                // 예: AJAX 요청 또는 폼 제출
+            	// 사용자에게 "정말로 회원 탈퇴를 하시겠습니까?"라는 메시지를 띄우고,ㄴ 사용자가 "확인"을 클릭하면 true, "취소"를 클릭하면 false를 반환
+                // true일 경우에만 회원 탈퇴 절차가 진행
+                const formData = new FormData(this);
 
-                alert('회원 탈퇴가 완료되었습니다.');
-                // 실제 탈퇴 처리 로직 추가 필요
-                // 예: document.location.href = '탈퇴 처리 서버 URL';
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                    	// response.ok는 응답 상태가 200~299 범위 내에 있을 때 true를 반환
+                        alert('회원 탈퇴가 완료되었습니다.');
+                        window.location.href = '/';
+                    } else {
+                        alert('회원 탈퇴 처리에 실패했습니다. 다시 시도해 주세요.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('회원 탈퇴 처리 중 오류가 발생했습니다.');
+                });
             }
         });
     });
