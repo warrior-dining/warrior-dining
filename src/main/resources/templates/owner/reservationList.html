@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 관리 - WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/ownerHome.css">
+    <link rel="stylesheet" href="/css/ownerReservation.css">
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li class="nav-item">
+                <a href="#">음식점 관리</a>
+                <div class="sub-menu">
+                    <a href="#">내 가게 정보</a>
+                    <a href="#">뭔가 메뉴가 더 있겟지</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">예약 관리</a>
+                <div class="sub-menu">
+                    <a href="#">예약 현황</a>
+                    <a href="#">@@@@@@@</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">리뷰 관리</a>
+                <div class="sub-menu">
+                    <a href="#">가게 리뷰</a>
+                    <a href="#">요엘아 부탁한다</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">문의 사항 관리</a>
+                <div class="sub-menu">
+                    <a href="#">이게 오너쪽에 필요할까?</a>
+                    <a href="#">나는 모르겠다.</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <section class="reservation-list">
+            <h2>예약 관리</h2>
+            <div class="filter-search-container">
+                <div class="filter-buttons">
+                    <button onclick="filterReservations('전체')">전체</button>
+                    <button onclick="filterReservations('확정')">확정</button>
+                    <button onclick="filterReservations('대기')">대기</button>
+                    <button onclick="filterReservations('취소')">취소</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+                    <button onclick="searchReservations()">검색</button>
+                    <!-- 정렬 버튼을 검색 기능 옆에 위치시키기 -->
+                    <div class="sort-container">
+                        <button id="sort-button" onclick="toggleSort()">
+                            <span id="sort-icon" class="sort-icon sort-asc"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="reservation-container">
+                <!-- 예약 항목들 리스트로 표시 -->
+            </div>
+
+            <!-- 페이지네이션 버튼 -->
+            <div class="pagination">
+                <button id="prev-button" onclick="changePage(-1)">이전</button>
+                <button id="next-button" onclick="changePage(1)">다음</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    // 예약 데이터 배열
+    let reservations = [
+        { id: '0001', restaurant: '맛있는 식당', customer: '홍길동', date: '2024-08-20', time: '18:00', guests: '4명', status: '확정' },
+        { id: '0002', restaurant: '즐거운 레스토랑', customer: '김영희', date: '2024-08-21', time: '19:00', guests: '2명', status: '확정' },
+        { id: '0003', restaurant: '멋진 카페', customer: '이철수', date: '2024-08-22', time: '15:00', guests: '3명', status: '대기' },
+        { id: '0004', restaurant: '멋진 카페', customer: '김운서', date: '2024-08-22', time: '14:00', guests: '5명', status: '대기' },
+        { id: '0005', restaurant: '멋진 카페', customer: '오성민', date: '2024-08-22', time: '18:00', guests: '4명', status: '대기' },
+        { id: '0006', restaurant: '멋진 카페', customer: '차상민', date: '2024-08-22', time: '11:00', guests: '2명', status: '대기' },
+        { id: '0007', restaurant: '멋진 카페', customer: '이정와', date: '2024-08-22', time: '09:00', guests: '6명', status: '대기' },
+        // 더 많은 예약 데이터 추가
+    ];
+
+    const itemsPerPage = 5; // 페이지당 표시할 항목 수
+    let currentPage = 1; // 현재 페이지
+    let currentStatusFilter = '전체'; // 현재 필터 상태
+    let searchQuery = ''; // 현재 검색어
+    let isAscending = true; // 정렬 순서
+
+    // 예약 목록을 렌더링하는 함수
+    function renderReservations() {
+        const container = document.getElementById('reservation-container');
+        container.innerHTML = '';
+
+        // 현재 페이지에 맞는 예약 항목 추출
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        // 필터링 및 검색된 예약 목록을 페이지에 맞게 잘라내기
+        let filteredReservations = reservations.filter(reservation => {
+            return (currentStatusFilter === '전체' || reservation.status === currentStatusFilter) &&
+                (reservation.customer.includes(searchQuery) || reservation.restaurant.includes(searchQuery));
+        });
+
+        // 정렬
+        filteredReservations.sort((a, b) => {
+            if (isAscending) {
+                return new Date(`${a.date} ${a.time}`) - new Date(`${b.date} ${b.time}`);
+            } else {
+                return new Date(`${b.date} ${b.time}`) - new Date(`${a.date} ${a.time}`);
+            }
+        });
+
+        const pageReservations = filteredReservations.slice(startIndex, endIndex);
+
+        pageReservations.forEach((reservation) => {
+            const div = document.createElement('div');
+            div.classList.add('reservation-item');
+            div.innerHTML = `
+                <h3>예약 ID: ${reservation.id}</h3>
+                <p>고객 이름: ${reservation.customer} <span class="status ${reservation.status}">${reservation.status}</span> 예약 시간: ${reservation.date} ${reservation.time} ${reservation.guests}</p>
+                ${reservation.status === '대기' ? '<button class="cancel-button" onclick="cancelReservation(event, \'' + reservation.id + '\')">예약 취소</button>' : ''}
+                <div class="reservation-details">
+                    <p><strong>상세 정보:</strong></p>
+                    <p>예약 ID: ${reservation.id}</p>
+                    <p>음식점 이름: ${reservation.restaurant}</p>
+                    <p>고객 이름: ${reservation.customer}</p>
+                    <p>예약 날짜: ${reservation.date}</p>
+                    <p>예약 시간: ${reservation.time}</p>
+                    <p>인원 수: ${reservation.guests}</p>
+                    <p>상태: ${reservation.status}</p>
+                </div>
+            `;
+            div.onclick = function() {
+                const details = this.querySelector('.reservation-details');
+                if (details.classList.contains('open')) {
+                    details.classList.remove('open');
+                } else {
+                    // 닫힌 상태일 때, 열린 상태를 자동으로 닫기
+                    document.querySelectorAll('.reservation-details.open').forEach(detail => {
+                        detail.classList.remove('open');
+                    });
+                    details.classList.add('open');
+                }
+            };
+            container.appendChild(div);
+        });
+
+        // 페이지네이션 버튼 활성화/비활성화 설정
+        document.getElementById('prev-button').disabled = currentPage === 1;
+        document.getElementById('next-button').disabled = endIndex >= filteredReservations.length;
+    }
+
+    // 페이지를 변경하는 함수
+    function changePage(direction) {
+        currentPage += direction;
+        renderReservations();
+    }
+
+    // 예약을 취소하는 함수
+    function cancelReservation(event, id) {
+        event.stopPropagation(); // 클릭 이벤트가 상세보기 전환을 방지
+        if (confirm('정말로 예약을 취소하시겠습니까?')) {
+            // 예약 상태를 '취소'로 변경
+            const reservation = reservations.find(reservation => reservation.id === id);
+            if (reservation) {
+                reservation.status = '취소';
+                renderReservations(); // 업데이트된 예약 목록 렌더링
+            }
+        }
+    }
+
+    // 예약 상태를 필터링하는 함수
+    function filterReservations(status) {
+        currentStatusFilter = status;
+        currentPage = 1; // 필터링 시 첫 페이지로 이동
+        renderReservations();
+    }
+
+    // 예약 목록을 검색하는 함수
+    function searchReservations() {
+        searchQuery = document.getElementById('search-input').value;
+        currentPage = 1; // 검색 시 첫 페이지로 이동
+        renderReservations();
+    }
+
+    // 정렬 토글 함수
+    function toggleSort() {
+        isAscending = !isAscending;
+        document.getElementById('sort-icon').classList.toggle('sort-asc', isAscending);
+        document.getElementById('sort-icon').classList.toggle('sort-desc', !isAscending);
+        renderReservations();
+    }
+
+    renderReservations(); // 초기 페이지 렌더링
+</script>
+</body>
+</html>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 목록 - WarriorDining</title>
+    <title>공지사항 작성 - WarriorDining</title>
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/managerHome.css">
-    <link rel="stylesheet" href="/css/memberList.css">
+    <link rel="stylesheet" href="/css/managerNoticeDetail.css">
+
 </head>
 <body>
 <header>
@@ -14,8 +15,7 @@
         <div class="header-content">
             <a href="#" class="logo">WarriorDining</a>
             <div class="auth-buttons">
-                <a href="#">로그인</a>
-                <a href="#">회원 가입</a>
+                <a href="#">로그아웃</a>
             </div>
         </div>
     </div>
@@ -24,6 +24,12 @@
 <div class="nav-bar">
     <div class="container">
         <ul>
+            <li class="nav-item">
+                <a href="#">공지 사항</a>
+                <div class="sub-menu">
+                    <a href="#">공지 사항 목록</a>
+                </div>
+            </li>
             <li class="nav-item">
                 <a href="#">회원 관리</a>
                 <div class="sub-menu">
@@ -59,62 +65,37 @@
                     <a href="#">미처리 문의</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="#">통계 및 보고서</a>
-                <div class="sub-menu">
-                    <a href="#">월간 통계</a>
-                    <a href="#">연간 보고서</a>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
 
 <main>
     <div class="container">
-        <h2>회원 목록</h2>
-        <div class="search-bar">
-            <select>
-                <option value="id">회원 ID</option>
-                <option value="name">이름</option>
-                <option value="email">권한</option>
-            </select>
-            <input type="text" placeholder="검색어 입력...">
-            <button>검색</button>
-        </div>
-        <table>
-            <thead>
-            <tr>
-                <th>No</th>
-                <th>회원 ID</th>
-                <th>이름</th>
-                <th>가입일</th>
-                <th>권한</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr onclick="location.href='#'">
-                <td>1</td>
-                <td>hong@example.com</td>
-                <td>홍길동</td>
-                <td>2024-01-15</td>
-                <td>관리자</td>
-            </tr>
-            <tr onclick="location.href='#'">
-                <td>2</td>
-                <td>kim@example.com</td>
-                <td>김철수</td>
-                <td>2024-02-20</td>
-                <td>사용자, 오너</td>
-            </tr>
-            <!-- 추가 회원 데이터 -->
-            </tbody>
-        </table>
-        <div class="pagination">
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">다음</a>
+        <h2>공지사항</h2>
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" name="title" readonly>
+                </div>
+                <div class="form-group meta-info">
+                    <div>
+                        <label for="author">작성자</label>
+                        <input type="text" id="author" name="author" value=" 관리자 " readonly>
+                    </div>
+                    <div>
+                        <label for="date">작성시간</label>
+                        <input type="text" id="date" name="date" value=" 2024-09-04 15:35 " readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea id="content" name="content" readonly></textarea>
+                </div>
+                <div class="button-container">
+                    <button class="save-btn" type="button">목록으로 가기</button>
+                </div>
+            </form>
         </div>
     </div>
 </main>

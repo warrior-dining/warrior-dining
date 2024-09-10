@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 상세정보 - WarriorDining</title>
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/managerHome.css">
+    <link rel="stylesheet" href="/css/memberList.css">
+    <link rel="stylesheet" href="/css/memberManagementDetail.css">
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">WarriorDining</a>
+            <div class="auth-buttons">
+                <a href="#">로그인</a>
+                <a href="#">회원 가입</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-bar">
+    <div class="container">
+        <ul>
+            <li class="nav-item">
+                <a href="#">회원 관리</a>
+                <div class="sub-menu">
+                    <a href="#">회원 목록</a>
+                    <a href="#">뭔가 메뉴가 더 있겟지</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">음식점 관리</a>
+                <div class="sub-menu">
+                    <a href="#">음식점 목록</a>
+                    <a href="#">음식점 추가</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">리뷰 관리</a>
+                <div class="sub-menu">
+                    <a href="#">리뷰 목록</a>
+                    <a href="#">리뷰 필터</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">예약 관리</a>
+                <div class="sub-menu">
+                    <a href="#">예약 목록</a>
+                    <a href="#">예약 검색</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">문의 사항 관리</a>
+                <div class="sub-menu">
+                    <a href="#">문의 목록</a>
+                    <a href="#">미처리 문의</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">통계 및 보고서</a>
+                <div class="sub-menu">
+                    <a href="#">월간 통계</a>
+                    <a href="#">연간 보고서</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <div class="details-container">
+            <h2>회원 상세정보</h2>
+            <div class="info">
+                <p><label>회원 ID :</label> 001</p>
+                <p><label>이름 :</label> 홍길동</p>
+                <p><label>성별 :</label> 남</p>
+                <p><label>이메일 :</label> hong@example.com</p>
+                <p><label>가입일 :</label> 2024-01-15</p>
+                <p><label>권한 :</label> 관리자, 오너</p>
+                <p><label>상태 :</label> 활성</p>
+            </div>
+            <div class="btn-container">
+                <button onclick="openModal('grant')">권한 부여</button>
+                <button onclick="openModal('revoke')">권한 제거</button>
+            </div>
+        </div>
+
+        <!-- 권한 부여 모달 -->
+        <div id="grantModal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('grant')">&times;</button>
+                <h2>권한 부여</h2>
+                <div class="form-group">
+                    <label for="grantRole">권한 선택:</label>
+                    <select id="grantRole">
+                        <option value="admin">관리자</option>
+                        <option value="owner">오너</option>
+                    </select>
+                </div>
+                <button onclick="grantRole()">부여하기</button>
+            </div>
+        </div>
+
+        <!-- 권한 제거 모달 -->
+        <div id="revokeModal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('revoke')">&times;</button>
+                <h2>권한 제거</h2>
+                <div class="form-group">
+                    <label for="revokeRole">제거할 권한:</label>
+                    <select id="revokeRole">
+                        <option value="admin">관리자</option>
+                        <option value="owner">오너</option>
+                    </select>
+                </div>
+                <button onclick="revokeRole()">제거하기</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 WarriorDining. All rights reserved.</p>
+</footer>
+
+<script>
+    function openModal(type) {
+        document.getElementById(type + 'Modal').style.display = 'flex';
+    }
+
+    function closeModal(type) {
+        document.getElementById(type + 'Modal').style.display = 'none';
+    }
+
+    function grantRole() {
+        // 권한 부여 로직 구현
+        alert('권한이 부여되었습니다.');
+        closeModal('grant');
+    }
+
+    function revokeRole() {
+        // 권한 제거 로직 구현
+        alert('권한이 제거되었습니다.');
+        closeModal('revoke');
+    }
+</script>
+
+</body>
+</html>

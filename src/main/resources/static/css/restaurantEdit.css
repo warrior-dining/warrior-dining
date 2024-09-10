@@ -128,16 +128,9 @@
         font-size: 14px;
     }
 
-    .menu-item {
-        flex-direction: column; /* 메뉴 항목을 세로 방향으로 정렬 */
-        align-items: stretch; /* 메뉴 항목을 전체 너비로 확장 */
-        gap: 10px; /* 메뉴 항목 간 간격 조정 */
-    }
-
     .menu-item input[type="text"],
     .menu-item input[type="number"] {
-        width: 100%; /* 입력란을 전체 너비로 확장 */
-        margin-right: 0; /* 오른쪽 여백 제거 */
+        width: 100%; /* 모바일에서는 입력란을 전체 너비로 확장 */
     }
 
     .menu-header {
@@ -159,7 +152,7 @@
 }
 
 /* 모바일 기기 및 작은 화면용 스타일 */
-@media (max-width: 738px) {
+@media (max-width: 600px) {
     .form-container {
         padding: 10px;
         box-shadow: none; /* 작은 화면에서는 그림자를 제거 */
@@ -176,60 +169,80 @@
         font-size: 14px;
     }
 
-    .menu-item {
-        flex-direction: column; /* 메뉴 항목을 세로 방향으로 정렬 */
-        align-items: stretch; /* 메뉴 항목을 전체 너비로 확장 */
-        gap: 10px; /* 메뉴 항목 간 간격 조정 */
-    }
-
     .menu-item input[type="text"],
     .menu-item input[type="number"] {
-        width: 100%; /* 입력란을 전체 너비로 확장 */
+        width: 100%; /* 입력란 너비를 전체로 조정 */
         margin-right: 0; /* 오른쪽 여백 제거 */
     }
 
-    .menu-header {
+    .menu-container-wrapper {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch; /* 메뉴 컨테이너의 정렬을 변경 */
     }
 
-    .menu-header label {
-        margin-bottom: 5px;
+    #menu-container {
+        display: flex;
+        flex-wrap: wrap; /* 메뉴 항목이 두 줄로 줄바꿈되도록 설정 */
+        gap: 10px; /* 항목 사이의 간격 조정 */
+    }
+
+    .menu-item-container {
+        display: flex;
+        flex-wrap: wrap; /* 메뉴 항목이 두 줄로 줄바꿈되도록 설정 */
+        gap: 10px; /* 항목 사이의 간격 조정 */
+        width: 100%;
+    }
+
+    .menu-item-container .menu-item {
+        flex: 1 1 calc(50% - 10px); /* 항목을 두 열로 정렬, 간격 고려 */
+        box-sizing: border-box; /* 패딩과 테두리를 포함한 너비 계산 */
+        margin-bottom: 10px; /* 아이템 간 여백 추가 */
     }
 
     .add-menu-item {
-        font-size: 1.5em; /* 모바일에서는 버튼을 더 크게 */
-    }
-
-    .delete-menu-item {
-        font-size: 1.5em;
+        margin-left: 0; /* 왼쪽 여백 제거 */
+        margin-right: 0; /* 오른쪽 여백 제거 */
+        display: block;
     }
 }
 
 /* 중간 화면 크기용 스타일 */
-@media (min-width: 739px) and (max-width: 959px) {
-    .menu-item {
-        flex-direction: row; /* 메뉴 항목을 가로 방향으로 정렬 */
-        align-items: center;
-        gap: 10px; /* 메뉴 항목 간 간격 조정 */
+@media (min-width: 601px) and (max-width: 992px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-actions button {
+        padding: 10px 18px;
+        font-size: 15px;
     }
 
     .menu-item input[type="text"],
     .menu-item input[type="number"] {
-        width: 190px; /* 입력란 너비를 중간 크기로 조정 */
+        width: 250px; /* 입력란 너비를 중간 크기로 조정 */
     }
 
-    .menu-header {
-        flex-direction: row; /* "메뉴 추가"와 버튼을 가로 방향으로 정렬 */
+    #menu-container {
+        display: flex;
+        flex-wrap: wrap; /* 메뉴 항목이 줄바꿈되도록 설정 */
+        gap: 10px; /* 항목 사이의 간격 조정 */
+    }
+
+    .menu-item-container .menu-item {
+        flex: 1 1 calc(33.333% - 10px); /* 화면 크기에 맞게 3열로 정렬, 간격 고려 */
     }
 }
 
 /* 큰 화면 및 데스크톱용 스타일 */
-@media (min-width: 960px) {
-    .menu-item {
-        flex-direction: row; /* 메뉴 항목을 가로 방향으로 정렬 */
-        align-items: center;
-        gap: 10px; /* 메뉴 항목 간 간격 조정 */
+@media (min-width: 993px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-actions button {
+        padding: 10px 20px;
+        font-size: 16px;
     }
 
     .menu-item input[type="text"],
@@ -237,7 +250,13 @@
         width: 300px; /* 입력란 너비를 큰 화면에 맞게 조정 */
     }
 
-    .menu-header {
-        flex-direction: row; /* "메뉴 추가"와 버튼을 가로 방향으로 정렬 */
+    #menu-container {
+        display: flex;
+        flex-wrap: nowrap; /* 큰 화면에서는 줄바꿈 없이 한 줄로 표시 */
+        gap: 10px; /* 항목 사이의 간격 조정 */
+    }
+
+    .menu-item-container .menu-item {
+        flex: 1 1 auto; /* 아이템의 너비를 자동으로 조정 */
     }
 }
